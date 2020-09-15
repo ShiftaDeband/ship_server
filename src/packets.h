@@ -788,7 +788,7 @@ typedef struct dc_game_join {
     uint8_t section;
     uint8_t challenge;
     uint32_t rand_seed;
-    uint8_t version;
+    uint8_t episode;
     uint8_t one2;                       /* Always 1. */
     uint16_t padding;
 } PACKED dc_game_join_pkt;
