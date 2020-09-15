@@ -2112,7 +2112,7 @@ static int pc_process_game_create(ship_client_t *c, pc_game_create_pkt *pkt) {
 
     /* Create the lobby structure. */
     l = lobby_create_game(c->cur_block, name, password, pkt->difficulty,
-                          pkt->battle, pkt->challenge, 2, c->version,
+                          pkt->battle, pkt->challenge, pkt->version, c->version,
                           c->pl->v1.section, event, 2, c, 0);
 
     /* If we don't have a game, something went wrong... tell the user. */
