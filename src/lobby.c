@@ -325,7 +325,7 @@ lobby_t *lobby_create_game(block_t *block, char *name, char *passwd,
        work. On PSODC and PSOPC, it'll be 0 at this point, so make it 1 (as it
        would be expected to be). */
     if(version < CLIENT_VERSION_GC)
-        episode = 1;
+        episode = 2;
 
     /* Generate the random maps we'll be using for this game, assuming the
        client hasn't set a maps string. */
