@@ -3566,6 +3566,8 @@ static int send_dc_game_join(ship_client_t *c, lobby_t *l) {
     pkt->section = l->section;
     pkt->challenge = l->challenge;
     pkt->rand_seed = LE32(l->rand_seed);
+    pkt->version = l->version;
+
 
     /* Fill in the variations array. */
     for(i = 0; i < 0x20; ++i) {
