@@ -3543,7 +3543,7 @@ static int send_dcnte_game_join(ship_client_t *c, lobby_t *l) {
 
 static int send_dc_game_join(ship_client_t *c, lobby_t *l) {
     uint8_t *sendbuf = get_sendbuf();
-    dc_game_join_pkt *pkt = (dc_game_join_pkt *)sendbuf;
+    gc_game_join_pkt *pkt = (gc_game_join_pkt *)sendbuf;
     int clients = 0, i;
 
     /* Verify we got the sendbuf. */
@@ -3552,11 +3552,11 @@ static int send_dc_game_join(ship_client_t *c, lobby_t *l) {
     }
 
     /* Clear it out first. */
-    memset(pkt, 0, DC_GAME_JOIN_LENGTH);
+    memset(pkt, 0, GC_GAME_JOIN_LENGTH);
 
     /* Fill in the basics. */
     pkt->hdr.pkt_type = GAME_JOIN_TYPE;
-    pkt->hdr.pkt_len = LE16(DC_GAME_JOIN_LENGTH);
+    pkt->hdr.pkt_len = LE16(GC_GAME_JOIN_LENGTH);
     pkt->client_id = c->client_id;
     pkt->leader_id = l->leader_id;
     pkt->one = 1;
@@ -3566,8 +3566,8 @@ static int send_dc_game_join(ship_client_t *c, lobby_t *l) {
     pkt->section = l->section;
     pkt->challenge = l->challenge;
     pkt->rand_seed = LE32(l->rand_seed);
-    pkt->version = l->version;
-
+    pkt->episode = l->episode;
+    pkt->one2 = 1;
 
     /* Fill in the variations array. */
     for(i = 0; i < 0x20; ++i) {
@@ -3598,7 +3598,7 @@ static int send_dc_game_join(ship_client_t *c, lobby_t *l) {
     pkt->hdr.flags = (uint8_t)clients;
 
     /* Send it away */
-    return crypt_send(c, DC_GAME_JOIN_LENGTH, sendbuf);
+    return crypt_send(c, GC_GAME_JOIN_LENGTH, sendbuf);
 }
 
 static int send_pc_game_join(ship_client_t *c, lobby_t *l) {
