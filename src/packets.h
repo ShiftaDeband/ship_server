@@ -724,7 +724,7 @@ typedef struct dc_game_create {
     uint8_t difficulty;
     uint8_t battle;
     uint8_t challenge;
-    uint8_t version;                    /* Set to 1 for v2 games, 0 otherwise */
+    uint8_t episode;
 } PACKED dc_game_create_pkt;
 
 typedef struct pc_game_create {
