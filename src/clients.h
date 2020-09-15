@@ -222,7 +222,7 @@ extern pthread_key_t sendbuf_key;
 
 /* Possible values for the version field of ship_client_t */
 #define CLIENT_VERSION_DCV1     0
-#define CLIENT_VERSION_DCV2     1
+#define CLIENT_VERSION_DCV2     2
 #define CLIENT_VERSION_PC       2
 #define CLIENT_VERSION_GC       3
 #define CLIENT_VERSION_EP3      4
